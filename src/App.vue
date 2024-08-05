@@ -107,7 +107,10 @@
                     </div>
 
                     <div class="list-tags flex-h">
-                      <section v-for="(v, idx) in row.tags">
+                      <section
+                        v-for="(v, idx) in row.tags"
+                        :key="idx"
+                      >
                         <i class="glyphicon glyphicon-tag"></i>
                         <span>{{ v }}</span>
                       </section>
@@ -185,6 +188,8 @@
 </template>
 
 <script>
+/* global sleep */
+
 export default {
   data() {
     return {
@@ -222,7 +227,7 @@ export default {
       }).then(async (res) => {
         const data = await res.json()
         const doc = (new DOMParser()).parseFromString(data.result.html, 'text/html')
-        this.data.list = doc.body.children.map((el, idx) => {
+        this.data.list = doc.body.children.map((el) => {
           const elCnt = el.getElementsByClassName('cdc-article-panel__operate')[1]
 
           return {
