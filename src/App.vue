@@ -66,7 +66,7 @@
           <div class="panel-heading">
             <h3 class="panel-title">帖子列表</h3>
           </div>
-          <div class="panel-body">
+          <div class="panel-body" style="min-height: 100vh;">
             <div class="main-article">
               <div class="space c" v-if="!data.list.length && data.isLoading">
                 <img v-if="data.isLoading" :src="'img/loading.gif'" alt="">
